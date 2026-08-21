@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#06b6d4"/>
+      <stop offset="100%" style="stop-color:#f97316"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="60" height="60" rx="12" fill="url(#grad)"/>
+  <path d="M15 40 L20 25 L28 18 L38 18 L44 25 L46 40 Z" fill="white" opacity="0.95"/>
+  <circle cx="24" cy="42" r="6" fill="white"/>
+  <circle cx="38" cy="42" r="6" fill="white"/>
+  <text x="75" y="38" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="800" fill="white">
+    LANKA<tspan fill="url(#grad)">RIDES</tspan>
+  </text>
+</svg>
