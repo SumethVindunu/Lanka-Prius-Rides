@@ -54,7 +54,7 @@ export default function ContactSection() {
             <span className="text-white">GET IN </span>
             <span className="gradient-text">TOUCH</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Have questions? Reach out anytime — we&apos;re here to help plan your
             perfect Sri Lanka trip.
           </p>
@@ -68,14 +68,14 @@ export default function ContactSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
             >
-              <Card className="h-full text-center group hover:border-cyan-500/30">
+              <Card className="h-full text-center group hover:border-primary/30">
                 <CardContent className="p-6 flex flex-col items-center">
-                  <div className="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 transition-colors">
-                    <c.icon className="w-7 h-7 text-cyan-400" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <c.icon className="w-7 h-7 text-amber-400" />
                   </div>
                   <h3 className="text-white font-semibold mb-1">{c.title}</h3>
-                  <p className="text-cyan-400 text-sm font-medium">{c.detail}</p>
-                  <p className="text-gray-500 text-xs mt-1 mb-4">{c.sub}</p>
+                  <p className="text-amber-400 text-sm font-medium">{c.detail}</p>
+                  <p className="text-muted-foreground text-xs mt-1 mb-4">{c.sub}</p>
                   <Button variant="ghost" size="sm" asChild>
                     <a
                       href={c.href}

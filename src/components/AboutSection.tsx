@@ -47,7 +47,7 @@ export default function AboutSection() {
             <span className="text-white">WHY CHOOSE </span>
             <span className="gradient-text">US</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             More than just a ride — it&apos;s your personal gateway to experiencing
             the beauty of Sri Lanka with comfort and safety.
           </p>
@@ -61,15 +61,15 @@ export default function AboutSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.15 }}
             >
-              <Card className="h-full p-6 group cursor-default hover:border-cyan-500/30">
+              <Card className="h-full p-6 group cursor-default hover:border-primary/30">
                 <CardContent className="p-0">
-                  <div className="w-14 h-14 rounded-xl bg-cyan-500/10 flex items-center justify-center mb-4 group-hover:bg-cyan-500/20 transition-colors">
-                    <feature.icon className="w-7 h-7 text-cyan-400" />
+                  <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
+                    <feature.icon className="w-7 h-7 text-amber-400" />
                   </div>
                   <h3 className="text-lg font-semibold text-white mb-2 font-orbitron">
                     {feature.title}
                   </h3>
-                  <p className="text-gray-400 text-sm leading-relaxed">
+                  <p className="text-muted-foreground text-sm leading-relaxed">
                     {feature.desc}
                   </p>
                 </CardContent>
@@ -87,7 +87,7 @@ export default function AboutSection() {
         >
           <Card className="p-8 lg:p-12">
             <CardContent className="p-0 flex flex-col lg:flex-row gap-8 items-center">
-              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-cyan-500/30 to-orange-500/30 flex items-center justify-center shrink-0 ring-2 ring-cyan-500/20 ring-offset-4 ring-offset-darker">
+              <div className="w-32 h-32 rounded-full bg-gradient-to-br from-primary/30 to-orange-500/30 flex items-center justify-center shrink-0 ring-2 ring-primary/20 ring-offset-4 ring-offset-background">
                 <span className="text-5xl">🧑‍✈️</span>
               </div>
               <div>
@@ -95,7 +95,7 @@ export default function AboutSection() {
                   YOUR TRUSTED DRIVER
                 </h3>
                 <Separator className="mb-4 w-20" />
-                <p className="text-gray-400 leading-relaxed mb-4">
+                <p className="text-muted-foreground leading-relaxed mb-4">
                   Hi! I&apos;m your dedicated driver based in Sri Lanka. With years of
                   experience driving tourists across the island, I offer a safe,
                   comfortable, and personalized travel experience. My well-maintained

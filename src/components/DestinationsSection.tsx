@@ -80,7 +80,7 @@ export default function DestinationsSection() {
           backgroundPosition: "center",
         }}
       />
-      <div className="absolute inset-0 bg-gradient-to-b from-darker via-darker/95 to-darker" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background" />
 
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
         <motion.div
@@ -93,7 +93,7 @@ export default function DestinationsSection() {
             <span className="text-white">POPULAR </span>
             <span className="gradient-text">DESTINATIONS</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Discover the most beautiful places in Sri Lanka. We&apos;ll take you
             there in comfort and style.
           </p>
@@ -111,13 +111,13 @@ export default function DestinationsSection() {
                 <Tooltip>
                   <TooltipTrigger asChild>
                     <div>
-                      <Card className="h-full p-5 cursor-default hover:-translate-y-1 hover:border-cyan-500/30 transition-all duration-300">
+                      <Card className="h-full p-5 cursor-default hover:-translate-y-1 hover:border-primary/30 transition-all duration-300">
                         <CardContent className="p-0">
                           <div className="text-4xl mb-3">{dest.emoji}</div>
                           <h3 className="text-lg font-semibold text-white mb-1 font-orbitron">
                             {dest.name}
                           </h3>
-                          <p className="text-gray-400 text-sm mb-3">{dest.desc}</p>
+                          <p className="text-muted-foreground text-sm mb-3">{dest.desc}</p>
                           <Badge variant="outline" className="text-xs">
                             <MapPin className="w-3 h-3 mr-1" />
                             {dest.time}
@@ -127,7 +127,7 @@ export default function DestinationsSection() {
                     </div>
                   </TooltipTrigger>
                   <TooltipContent side="bottom" className="max-w-[250px]">
-                    <p className="font-semibold text-cyan-400 mb-1">Highlights:</p>
+                    <p className="font-semibold text-amber-400 mb-1">Highlights:</p>
                     <p className="text-xs">{dest.highlights}</p>
                   </TooltipContent>
                 </Tooltip>

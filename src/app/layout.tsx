@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import type { ReactNode } from "react";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/theme-provider";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link
@@ -28,7 +29,9 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         className="antialiased"
         style={{ fontFamily: "'Inter', sans-serif" }}
       >
-        {children}
+        <ThemeProvider defaultTheme="light" storageKey="lanka-rides-theme">
+          {children}
+        </ThemeProvider>
         <Toaster position="top-right" />
       </body>
     </html>

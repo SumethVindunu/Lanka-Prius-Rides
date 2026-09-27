@@ -65,11 +65,11 @@ function ServiceCard({ service, i, isInView }: { service: typeof services[0]; i:
       animate={isInView ? { opacity: 1, y: 0, rotateX: 0 } : {}}
       transition={{ duration: 0.6, delay: i * 0.1 }}
     >
-      <Card className="h-full group cursor-default hover:border-cyan-500/30 relative overflow-hidden">
+      <Card className="h-full group cursor-default hover:border-primary/30 relative overflow-hidden">
         <div
           className={`absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 ${
             service.color === "cyan"
-              ? "bg-gradient-to-br from-cyan-500/5 to-transparent"
+              ? "bg-gradient-to-br from-primary/5 to-transparent"
               : "bg-gradient-to-br from-orange-500/5 to-transparent"
           }`}
         />
@@ -77,13 +77,13 @@ function ServiceCard({ service, i, isInView }: { service: typeof services[0]; i:
           <div
             className={`w-14 h-14 rounded-xl flex items-center justify-center mb-2 ${
               service.color === "cyan"
-                ? "bg-cyan-500/10 group-hover:bg-cyan-500/20"
+                ? "bg-primary/10 group-hover:bg-primary/20"
                 : "bg-orange-500/10 group-hover:bg-orange-500/20"
             } transition-colors`}
           >
             <service.icon
               className={`w-7 h-7 ${
-                service.color === "cyan" ? "text-cyan-400" : "text-orange-400"
+                service.color === "cyan" ? "text-amber-400" : "text-orange-400"
               }`}
             />
           </div>
@@ -106,7 +106,7 @@ export default function ServicesSection() {
 
   return (
     <section id="services" className="relative py-24 overflow-hidden">
-      <div className="absolute top-0 left-0 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl" />
+      <div className="absolute top-0 left-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl" />
       <div className="absolute bottom-0 right-0 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" ref={ref}>
@@ -120,7 +120,7 @@ export default function ServicesSection() {
             <span className="text-white">OUR </span>
             <span className="gradient-text">SERVICES</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             From airport pickups to multi-day island tours, we&apos;ve got your
             Sri Lanka journey covered.
           </p>

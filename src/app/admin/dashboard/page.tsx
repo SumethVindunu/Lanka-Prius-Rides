@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useCallback } from "react";
 import { motion } from "framer-motion";
 import { useRouter } from "next/navigation";
 import {
@@ -75,16 +75,7 @@ export default function AdminDashboard() {
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [search, setSearch] = useState<string>("");
 
-  useEffect(() => {
-    const auth = sessionStorage.getItem("adminAuth");
-    if (!auth) {
-      router.push("/admin");
-      return;
-    }
-    fetchBookings();
-  }, [router]);
-
-  const fetchBookings = async () => {
+  const fetchBookings = useCallback(async () => {
     try {
       const res = await fetch("/api/bookings");
       const data = await res.json();
@@ -94,7 +85,17 @@ export default function AdminDashboard() {
     } finally {
       setLoading(false);
     }
-  };
+  }, []);
+
+  useEffect(() => {
+    const auth = sessionStorage.getItem("adminAuth");
+    if (!auth) {
+      router.push("/admin");
+      return;
+    }
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    fetchBookings();
+  }, [router, fetchBookings]);
 
   const openView = (b: Booking) => {
     setSelected(b);
@@ -177,19 +178,19 @@ export default function AdminDashboard() {
   });
 
   return (
-    <div className="min-h-screen bg-darker">
+    <div className="min-h-screen bg-background">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
         <div className="flex items-center justify-between mb-8">
           <div>
-            <h1 className="text-3xl font-bold text-white font-orbitron">ADMIN DASHBOARD</h1>
-            <p className="text-gray-400 mt-1">Manage appointments and bookings</p>
+            <h1 className="text-3xl font-bold text-foreground font-orbitron">ADMIN DASHBOARD</h1>
+            <p className="text-muted-foreground mt-1">Manage appointments and bookings</p>
           </div>
           <Button variant="outline" onClick={handleLogout} className="gap-2">
             <ShieldCheck className="w-4 h-4" /> Logout
           </Button>
         </div>
 
-        <Card className="border-cyan-500/10 mt-4">
+        <Card className="border-primary/10 mt-4">
           <CardHeader>
             <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
               <div>
@@ -219,14 +220,14 @@ export default function AdminDashboard() {
           </CardHeader>
           <CardContent>
             {loading ? (
-              <p className="text-gray-400 text-center py-12">Loading...</p>
+              <p className="text-muted-foreground text-center py-12">Loading...</p>
             ) : filteredBookings.length === 0 ? (
-              <p className="text-gray-500 text-center py-12">No bookings match your filters.</p>
+              <p className="text-muted-foreground text-center py-12">No bookings match your filters.</p>
             ) : (
               <div className="overflow-x-auto">
                 <table className="w-full text-left text-sm">
                   <thead>
-                    <tr className="border-b border-card-border text-gray-400">
+                    <tr className="border-b border-border text-muted-foreground">
                       <th className="py-3 px-4 font-medium">ID</th>
                       <th className="py-3 px-4 font-medium">Customer</th>
                       <th className="py-3 px-4 font-medium">Route</th>
@@ -237,30 +238,30 @@ export default function AdminDashboard() {
                   </thead>
                   <tbody>
                     {filteredBookings.map((b) => (
-                      <tr key={b.id} className="border-b border-card-border/50 hover:bg-white/[0.02]">
-                        <td className="py-3 px-4 text-gray-300 font-mono">#{b.id}</td>
+                      <tr key={b.id} className="border-b border-border/50 hover:bg-background">
+                        <td className="py-3 px-4 text-foreground font-mono">#{b.id}</td>
                         <td className="py-3 px-4">
-                          <div className="text-white font-medium">{b.fullName}</div>
-                          <div className="text-gray-500 text-xs">{b.email}</div>
+                           <div className="text-foreground font-medium">{b.fullName}</div>
+                          <div className="text-muted-foreground text-xs">{b.email}</div>
                         </td>
                         <td className="py-3 px-4">
-                          <div className="flex items-center gap-1 text-gray-300">
-                            <MapPin className="w-3 h-3 text-cyan-400" />
-                            <span className="truncate max-w-[200px]">{b.pickupLocation}</span>
+                          <div className="flex items-center gap-1 text-foreground">
+                             <MapPin className="w-3 h-3 text-primary" />
+                             <span className="truncate max-w-[200px]">{b.pickupLocation}</span>
                           </div>
-                          <div className="flex items-center gap-1 text-gray-300 mt-1">
-                            <MapPin className="w-3 h-3 text-orange-400" />
-                            <span className="truncate max-w-[200px]">{b.dropoffLocation}</span>
+                          <div className="flex items-center gap-1 text-foreground mt-1">
+                             <MapPin className="w-3 h-3 text-orange-500" />
+                             <span className="truncate max-w-[200px]">{b.dropoffLocation}</span>
                           </div>
                         </td>
-                        <td className="py-3 px-4 text-gray-300">
+                        <td className="py-3 px-4 text-foreground">
                           <div className="flex items-center gap-1">
-                            <CalendarDays className="w-3 h-3 text-cyan-400" />
-                            {b.pickupDate}
+                             <CalendarDays className="w-3 h-3 text-primary" />
+                             {b.pickupDate}
                           </div>
                           <div className="flex items-center gap-1 mt-1">
-                            <Clock className="w-3 h-3 text-cyan-400" />
-                            {b.pickupTime}
+                             <Clock className="w-3 h-3 text-primary" />
+                             {b.pickupTime}
                           </div>
                         </td>
                         <td className="py-3 px-4">
@@ -306,27 +307,27 @@ export default function AdminDashboard() {
             <div className="space-y-4 text-sm">
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Full Name</p>
-                  <p className="text-white">{selected.fullName}</p>
+                  <p className="text-muted-foreground text-xs mb-1">Full Name</p>
+                   <p className="text-foreground">{selected.fullName}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Email</p>
-                  <p className="text-white">{selected.email}</p>
+                  <p className="text-muted-foreground text-xs mb-1">Email</p>
+                   <p className="text-foreground">{selected.email}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Phone</p>
-                  <p className="text-white">{selected.phone}</p>
+                  <p className="text-muted-foreground text-xs mb-1">Phone</p>
+                   <p className="text-foreground">{selected.phone}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Nationality</p>
-                  <p className="text-white">{selected.nationality}</p>
+                  <p className="text-muted-foreground text-xs mb-1">Nationality</p>
+                   <p className="text-foreground">{selected.nationality}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Passengers</p>
-                  <p className="text-white">{selected.passengers}</p>
+                  <p className="text-muted-foreground text-xs mb-1">Passengers</p>
+                   <p className="text-foreground">{selected.passengers}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Status</p>
+                  <p className="text-muted-foreground text-xs mb-1">Status</p>
                   <Badge variant="outline" className={statusColor(selected.status)}>
                     {selected.status}
                   </Badge>
@@ -334,12 +335,12 @@ export default function AdminDashboard() {
               </div>
               <Separator />
               <div>
-                <p className="text-gray-500 text-xs mb-1">Pickup</p>
-                <p className="text-white flex items-center gap-2"><MapPin className="w-3 h-3 text-cyan-400" /> {selected.pickupLocation}</p>
-                <p className="text-gray-400 text-xs mt-1">{selected.pickupDate} at {selected.pickupTime}</p>
+                <p className="text-muted-foreground text-xs mb-1">Pickup</p>
+                 <p className="text-foreground flex items-center gap-2"><MapPin className="w-3 h-3 text-primary" /> {selected.pickupLocation}</p>
+                <p className="text-muted-foreground text-xs mt-1">{selected.pickupDate} at {selected.pickupTime}</p>
                 {selected.pickupMapUrl && (
-                  <div className="mt-2 flex items-center gap-2">
-                    <a href={selected.pickupMapUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-cyan-400 hover:underline flex items-center gap-1">
+                   <div className="mt-2 flex items-center gap-2">
+                     <a href={selected.pickupMapUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-primary hover:underline flex items-center gap-1">
                       <ExternalLink className="w-3 h-3" /> Open Map
                     </a>
                     <Button variant="ghost" size="sm" className="h-6 px-2 text-xs" onClick={() => copyToClipboard(selected.pickupMapUrl!, "pickup URL")}>
@@ -349,11 +350,11 @@ export default function AdminDashboard() {
                 )}
               </div>
               <div>
-                <p className="text-gray-500 text-xs mb-1">Drop-off</p>
-                <p className="text-white flex items-center gap-2"><MapPin className="w-3 h-3 text-orange-400" /> {selected.dropoffLocation}</p>
+                <p className="text-muted-foreground text-xs mb-1">Drop-off</p>
+                 <p className="text-foreground flex items-center gap-2"><MapPin className="w-3 h-3 text-orange-500" /> {selected.dropoffLocation}</p>
                 {selected.dropoffMapUrl && (
                   <div className="mt-2 flex items-center gap-2">
-                    <a href={selected.dropoffMapUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-orange-400 hover:underline flex items-center gap-1">
+                    <a href={selected.dropoffMapUrl} target="_blank" rel="noopener noreferrer" className="text-xs text-orange-500 hover:underline flex items-center gap-1">
                       <ExternalLink className="w-3 h-3" /> Open Map
                     </a>
                     <Button variant="ghost" size="sm" className="h-6 px-2 text-xs" onClick={() => copyToClipboard(selected.dropoffMapUrl!, "drop-off URL")}>
@@ -364,8 +365,8 @@ export default function AdminDashboard() {
               </div>
               {selected.specialRequests && (
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Special Requests</p>
-                  <p className="text-gray-300">{selected.specialRequests}</p>
+                  <p className="text-muted-foreground text-xs mb-1">Special Requests</p>
+                  <p className="text-foreground">{selected.specialRequests}</p>
                 </div>
               )}
             </div>

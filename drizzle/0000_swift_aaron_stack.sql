@@ -1,0 +1,22 @@
+CREATE TABLE "bookings" (
+	"id" serial PRIMARY KEY NOT NULL,
+	"full_name" varchar(255) NOT NULL,
+	"email" varchar(255) NOT NULL,
+	"phone" varchar(50) NOT NULL,
+	"nationality" varchar(100) NOT NULL,
+	"pickup_location" varchar(500) NOT NULL,
+	"pickup_lat" varchar(20),
+	"pickup_lng" varchar(20),
+	"pickup_map_url" text,
+	"dropoff_location" varchar(500) NOT NULL,
+	"dropoff_lat" varchar(20),
+	"dropoff_lng" varchar(20),
+	"dropoff_map_url" text,
+	"pickup_date" date NOT NULL,
+	"pickup_time" time NOT NULL,
+	"passengers" varchar(10) NOT NULL,
+	"special_requests" text,
+	"status" varchar(50) DEFAULT 'pending' NOT NULL,
+	"confirmed" boolean DEFAULT false NOT NULL,
+	"created_at" timestamp DEFAULT now() NOT NULL
+);

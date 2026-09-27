@@ -25,13 +25,13 @@ function CalendarDayButton({
       className={cn(
         defaultClassNames.day_button,
         "inline-flex items-center justify-center rounded-lg text-sm font-medium h-9 w-9 p-0 transition-all duration-200",
-        "hover:bg-cyan-500/10 hover:text-cyan-400",
-        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-cyan-400",
+        "hover:bg-amber-500/10 hover:text-amber-400",
+        "focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-amber-400",
         modifiers.selected &&
-          "bg-cyan-500 text-black font-bold hover:bg-cyan-400 hover:text-black shadow-[0_0_12px_rgba(0,255,255,0.3)]",
+          "bg-amber-500 text-black font-bold hover:bg-amber-400 hover:text-black shadow-[0_0_12px_rgba(245,158,11,0.3)]",
         modifiers.today &&
           !modifiers.selected &&
-          "bg-cyan-500/10 text-cyan-400 font-semibold border border-cyan-500/30",
+          "bg-amber-500/10 text-amber-400 font-semibold border border-amber-500/30",
         modifiers.outside && "text-gray-600 opacity-50",
         modifiers.disabled && "text-gray-700 opacity-30 cursor-not-allowed",
         className
@@ -56,6 +56,7 @@ function Calendar({
   classNames,
   showOutsideDays = true,
   captionLayout = "label",
+  mode = "single",
   ...props
 }: CalendarProps) {
   const defaultClassNames = getDefaultClassNames();
@@ -66,33 +67,33 @@ function Calendar({
       captionLayout={captionLayout}
       className={cn("p-3", className)}
       classNames={{
-        root: cn(defaultClassNames.root, "text-gray-200"),
+        root: cn(defaultClassNames.root, "text-foreground"),
         months: cn(defaultClassNames.months, "flex flex-col sm:flex-row gap-4"),
         month: cn(defaultClassNames.month, "flex flex-col gap-4"),
         month_caption: cn(
           defaultClassNames.month_caption,
-          "flex justify-center pt-1 relative items-center mb-1"
+          "flex justify-center pt-1 relative items-center mb-1 gap-1"
         ),
         caption_label: cn(
           defaultClassNames.caption_label,
-          "text-sm font-semibold text-white font-orbitron tracking-wide"
+          "text-sm font-semibold text-foreground font-orbitron tracking-wide cursor-pointer"
         ),
-        nav: cn(defaultClassNames.nav, "flex items-center gap-1"),
+        nav: cn(defaultClassNames.nav, "flex items-center gap-1 relative z-10"),
         button_previous: cn(
           defaultClassNames.button_previous,
           buttonVariants({ variant: "ghost", size: "icon" }),
-          "h-8 w-8 bg-transparent text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 absolute left-1 top-0"
+          "h-8 w-8 text-muted-foreground hover:text-amber-400 hover:bg-amber-500/10 relative z-20"
         ),
         button_next: cn(
           defaultClassNames.button_next,
           buttonVariants({ variant: "ghost", size: "icon" }),
-          "h-8 w-8 bg-transparent text-gray-400 hover:text-cyan-400 hover:bg-cyan-500/10 absolute right-1 top-0"
+          "h-8 w-8 text-muted-foreground hover:text-amber-400 hover:bg-amber-500/10 relative z-20"
         ),
         month_grid: cn(defaultClassNames.month_grid, "w-full border-collapse"),
         weekdays: cn(defaultClassNames.weekdays, "flex"),
         weekday: cn(
           defaultClassNames.weekday,
-          "text-gray-500 rounded-md w-9 font-medium text-[0.7rem] uppercase"
+          "text-muted-foreground rounded-md w-9 font-medium text-[0.7rem] uppercase"
         ),
         week: cn(defaultClassNames.week, "flex w-full mt-1"),
         day: cn(
@@ -108,7 +109,7 @@ function Calendar({
         disabled: cn(defaultClassNames.disabled),
         range_middle: cn(
           defaultClassNames.range_middle,
-          "bg-cyan-500/10 text-cyan-400"
+          "bg-amber-500/10 text-amber-400"
         ),
         hidden: cn(defaultClassNames.hidden, "invisible"),
         ...classNames,

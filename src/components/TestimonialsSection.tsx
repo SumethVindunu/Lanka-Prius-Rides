@@ -54,7 +54,7 @@ export default function TestimonialsSection() {
             <span className="text-white">WHAT TOURISTS </span>
             <span className="gradient-text">SAY</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Don&apos;t just take our word for it — hear from travelers who
             explored Sri Lanka with us.
           </p>
@@ -68,10 +68,10 @@ export default function TestimonialsSection() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.6, delay: i * 0.1 }}
             >
-              <Card className="h-full hover:border-cyan-500/20">
+              <Card className="h-full hover:border-primary/20">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-cyan-500/30 to-orange-500/30 flex items-center justify-center shrink-0 font-bold text-white text-sm font-orbitron">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary/30 to-orange-500/30 flex items-center justify-center shrink-0 font-bold text-white text-sm font-orbitron">
                       {t.avatar}
                     </div>
                     <div className="flex-1">
@@ -80,22 +80,22 @@ export default function TestimonialsSection() {
                           <div className="text-white font-semibold text-sm">
                             {t.name}
                           </div>
-                          <div className="text-gray-500 text-xs">{t.country}</div>
+                          <div className="text-muted-foreground text-xs">{t.country}</div>
                         </div>
-                        <Quote className="w-5 h-5 text-cyan-500/20" />
+                        <Quote className="w-5 h-5 text-primary/20" />
                       </div>
                       <div className="flex gap-0.5 mt-1">
                         {Array.from({ length: t.rating }).map((_, j) => (
                           <Star
                             key={j}
-                            className="w-3.5 h-3.5 fill-cyan-400 text-cyan-400"
+                            className="w-3.5 h-3.5 fill-amber-400 text-amber-400"
                           />
                         ))}
                       </div>
                     </div>
                   </div>
                   <Separator className="mb-4" />
-                  <p className="text-gray-300 text-sm leading-relaxed italic">
+                  <p className="text-foreground text-sm leading-relaxed italic">
                     &ldquo;{t.text}&rdquo;
                   </p>
                 </CardContent>

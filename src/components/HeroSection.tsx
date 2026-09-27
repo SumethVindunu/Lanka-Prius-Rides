@@ -12,7 +12,7 @@ export default function HeroSection() {
       className="relative min-h-screen flex items-center justify-center overflow-hidden grid-bg"
     >
       {/* Radial gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-darker/50 to-darker pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-transparent via-background/50 to-background pointer-events-none" />
 
       {/* Content */}
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20">
@@ -29,7 +29,7 @@ export default function HeroSection() {
               transition={{ delay: 0.3 }}
             >
               <Badge className="mb-6 px-4 py-2 text-sm">
-                <span className="w-2 h-2 bg-cyan-400 rounded-full animate-pulse mr-2" />
+                <span className="w-2 h-2 bg-amber-400 rounded-full animate-pulse mr-2" />
                 Premium Car Hire Service
               </Badge>
             </motion.div>
@@ -44,7 +44,7 @@ export default function HeroSection() {
               </span>
             </h1>
 
-            <p className="text-gray-400 text-lg max-w-lg mb-8 leading-relaxed">
+            <p className="text-muted-foreground text-lg max-w-lg mb-8 leading-relaxed">
               Your personal Toyota Prius chauffeur service. Safe, comfortable,
               and eco-friendly rides across the Pearl of the Indian Ocean.
             </p>
@@ -72,11 +72,11 @@ export default function HeroSection() {
                   transition={{ delay: 0.8 }}
                   className="text-center"
                 >
-                  <stat.icon className="w-5 h-5 text-cyan-400 mx-auto mb-1" />
+                  <stat.icon className="w-5 h-5 text-amber-400 mx-auto mb-1" />
                   <div className="text-2xl font-bold text-white font-orbitron">
                     {stat.value}
                   </div>
-                  <div className="text-xs text-gray-500">{stat.label}</div>
+                  <div className="text-xs text-muted-foreground">{stat.label}</div>
                 </motion.div>
               ))}
             </div>
@@ -90,13 +90,13 @@ export default function HeroSection() {
             className="relative"
           >
             <div className="relative perspective-container">
-              <div className="absolute inset-0 bg-gradient-to-r from-cyan-500/20 to-orange-500/20 blur-3xl rounded-full" />
+              <div className="absolute inset-0 bg-gradient-to-r from-primary/20 to-orange-500/20 blur-3xl rounded-full" />
               <img
                 src="/images/hero-car.svg"
                 alt="Toyota Prius"
                 className="relative z-10 w-full animate-float drop-shadow-2xl rounded-2xl"
               />
-              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-cyan-400/50 to-transparent" />
+              <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-px bg-gradient-to-r from-transparent via-amber-400/50 to-transparent" />
             </div>
           </motion.div>
         </div>
@@ -108,7 +108,7 @@ export default function HeroSection() {
         animate={{ y: [0, 10, 0] }}
         transition={{ repeat: Infinity, duration: 2 }}
       >
-        <ChevronDown className="w-8 h-8 text-cyan-400/50" />
+        <ChevronDown className="w-8 h-8 text-amber-400/50" />
       </motion.div>
     </section>
   );

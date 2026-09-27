@@ -42,8 +42,8 @@ function GlowingSphere() {
       <mesh ref={ref} position={[0, 0, 0]}>
         <sphereGeometry args={[1.5, 64, 64]} />
         <MeshDistortMaterial
-          color="#0ff"
-          emissive="#0ff"
+          color="#f59e0b"
+          emissive="#f59e0b"
           emissiveIntensity={0.3}
           transparent
           opacity={0.15}
@@ -89,7 +89,7 @@ function Particles() {
       </bufferGeometry>
       <pointsMaterial
         size={0.03}
-        color="#0ff"
+        color="#f59e0b"
         transparent
         opacity={0.6}
         sizeAttenuation
@@ -108,7 +108,7 @@ function MovingLight() {
     }
   });
 
-  return <pointLight ref={ref} color="#0ff" intensity={2} distance={20} />;
+  return <pointLight ref={ref} color="#f59e0b" intensity={2} distance={20} />;
 }
 
 export default function Scene3D() {
@@ -125,9 +125,9 @@ export default function Scene3D() {
 
         <GlowingSphere />
 
-        <FloatingRing position={[0, 0, 0]} rotation={[0.5, 0, 0]} color="#0ff" speed={0.5} />
+        <FloatingRing position={[0, 0, 0]} rotation={[0.5, 0, 0]} color="#f59e0b" speed={0.5} />
         <FloatingRing position={[0, 0, 0]} rotation={[0, 0.5, 0.5]} color="#ff6b35" speed={0.3} />
-        <FloatingRing position={[0, 0, 0]} rotation={[1, 0.3, 0]} color="#0ff" speed={0.4} />
+        <FloatingRing position={[0, 0, 0]} rotation={[1, 0.3, 0]} color="#f59e0b" speed={0.4} />
 
         <Particles />
         <Stars radius={50} depth={50} count={2000} factor={4} saturation={0} fade speed={1} />

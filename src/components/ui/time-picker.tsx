@@ -61,13 +61,13 @@ export function TimePicker({
           variant="secondary"
           disabled={disabled}
           className={cn(
-            "w-full justify-start text-left font-normal h-11 px-4 rounded-xl bg-dark/80 border border-cyan-500/15 hover:border-cyan-400 hover:bg-dark/80 hover:shadow-[0_0_15px_rgba(0,255,255,0.15)] transition-all duration-300",
-            !value && "text-gray-500"
+            "w-full justify-start text-left font-normal h-11 px-4 rounded-xl bg-background/80 border border-amber-500/15 hover:border-amber-400 hover:bg-background/80 hover:shadow-[0_0_15px_rgba(245,158,11,0.15)] transition-all duration-300",
+            !value && "text-muted-foreground"
           )}
         >
-          <Clock className="mr-2 h-4 w-4 text-cyan-400 shrink-0" />
+          <Clock className="mr-2 h-4 w-4 text-amber-400 shrink-0" />
           {value ? (
-            <span className="text-gray-200">{formatDisplay}</span>
+            <span className="text-foreground">{formatDisplay}</span>
           ) : (
             <span>{placeholder}</span>
           )}
@@ -75,16 +75,16 @@ export function TimePicker({
       </PopoverTrigger>
       <PopoverContent className="w-auto p-0" align="start">
         <div className="p-3">
-          <p className="text-xs text-gray-500 font-medium mb-3 text-center font-orbitron tracking-wider">
+          <p className="text-xs text-muted-foreground font-medium mb-3 text-center font-orbitron tracking-wider">
             SELECT TIME
           </p>
           <div className="flex gap-2">
             {/* Hours */}
             <div className="flex flex-col items-center">
-              <span className="text-[10px] text-gray-500 mb-1 font-medium uppercase">
+              <span className="text-[10px] text-muted-foreground mb-1 font-medium uppercase">
                 Hour
               </span>
-              <ScrollArea className="h-48 w-14 rounded-lg border border-card-border">
+              <ScrollArea className="h-48 w-14 rounded-lg border border-border">
                 <div className="p-1">
                   {hours.map((h) => (
                     <button
@@ -94,8 +94,8 @@ export function TimePicker({
                       className={cn(
                         "w-full px-2 py-1.5 text-sm rounded-md transition-all text-center cursor-pointer",
                         parsed.hour === h
-                          ? "bg-cyan-500 text-black font-bold shadow-[0_0_10px_rgba(0,255,255,0.3)]"
-                          : "text-gray-300 hover:bg-cyan-500/10 hover:text-cyan-400"
+                          ? "bg-amber-500 text-black font-bold shadow-[0_0_10px_rgba(245,158,11,0.3)]"
+                          : "text-foreground hover:bg-amber-500/10 hover:text-amber-400"
                       )}
                     >
                       {String(h).padStart(2, "0")}
@@ -109,10 +109,10 @@ export function TimePicker({
 
             {/* Minutes */}
             <div className="flex flex-col items-center">
-              <span className="text-[10px] text-gray-500 mb-1 font-medium uppercase">
+              <span className="text-[10px] text-muted-foreground mb-1 font-medium uppercase">
                 Min
               </span>
-              <ScrollArea className="h-48 w-14 rounded-lg border border-card-border">
+              <ScrollArea className="h-48 w-14 rounded-lg border border-border">
                 <div className="p-1">
                   {minutes.map((m) => (
                     <button
@@ -122,8 +122,8 @@ export function TimePicker({
                       className={cn(
                         "w-full px-2 py-1.5 text-sm rounded-md transition-all text-center cursor-pointer",
                         parsed.minute === m
-                          ? "bg-cyan-500 text-black font-bold shadow-[0_0_10px_rgba(0,255,255,0.3)]"
-                          : "text-gray-300 hover:bg-cyan-500/10 hover:text-cyan-400"
+                          ? "bg-amber-500 text-black font-bold shadow-[0_0_10px_rgba(245,158,11,0.3)]"
+                          : "text-foreground hover:bg-amber-500/10 hover:text-amber-400"
                       )}
                     >
                       {String(m).padStart(2, "0")}
@@ -137,7 +137,7 @@ export function TimePicker({
 
             {/* AM/PM */}
             <div className="flex flex-col items-center">
-              <span className="text-[10px] text-gray-500 mb-1 font-medium uppercase">
+              <span className="text-[10px] text-muted-foreground mb-1 font-medium uppercase">
                 &nbsp;
               </span>
               <div className="flex flex-col gap-1 mt-1">
@@ -149,8 +149,8 @@ export function TimePicker({
                     className={cn(
                       "px-3 py-3 text-sm rounded-lg font-semibold transition-all cursor-pointer",
                       parsed.period === p && value
-                        ? "bg-cyan-500 text-black shadow-[0_0_10px_rgba(0,255,255,0.3)]"
-                        : "text-gray-400 hover:bg-cyan-500/10 hover:text-cyan-400 border border-card-border"
+                        ? "bg-amber-500 text-black shadow-[0_0_10px_rgba(245,158,11,0.3)]"
+                        : "text-muted-foreground hover:bg-amber-500/10 hover:text-amber-400 border border-border"
                     )}
                   >
                     {p}
@@ -161,8 +161,8 @@ export function TimePicker({
           </div>
 
           {/* Quick presets */}
-          <div className="mt-3 pt-3 border-t border-card-border">
-            <p className="text-[10px] text-gray-500 font-medium mb-2 uppercase">
+          <div className="mt-3 pt-3 border-t border-border">
+            <p className="text-[10px] text-muted-foreground font-medium mb-2 uppercase">
               Quick Select
             </p>
             <div className="grid grid-cols-4 gap-1">
@@ -186,8 +186,8 @@ export function TimePicker({
                   className={cn(
                     "px-2 py-1 text-xs rounded-md transition-all cursor-pointer",
                     value === preset.time
-                      ? "bg-cyan-500/20 text-cyan-400 font-medium"
-                      : "text-gray-400 hover:bg-cyan-500/10 hover:text-cyan-400"
+                      ? "bg-amber-500/20 text-amber-400 font-medium"
+                      : "text-muted-foreground hover:bg-amber-500/10 hover:text-amber-400"
                   )}
                 >
                   {preset.label}

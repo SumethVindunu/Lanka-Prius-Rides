@@ -40,7 +40,7 @@ export default function FleetSection() {
             <span className="text-white">THE </span>
             <span className="gradient-text">FLEET</span>
           </h2>
-          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+          <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Travel in our well-maintained Toyota Prius — the perfect blend of
             comfort, efficiency, and style.
           </p>
@@ -55,7 +55,7 @@ export default function FleetSection() {
             className="relative"
           >
             <Card className="overflow-hidden relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-orange-500/10 blur-3xl" />
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-orange-500/10 blur-3xl" />
               <CardContent className="p-0 relative">
                 <img
                   src="/images/hero-car.svg"
@@ -66,9 +66,9 @@ export default function FleetSection() {
                 <div className="absolute top-4 right-4 z-20">
                   <Card className="px-4 py-2 bg-card/90 backdrop-blur-sm">
                     <CardContent className="p-0">
-                      <div className="text-cyan-400 text-xs font-medium">Starting from</div>
+                      <div className="text-amber-400 text-xs font-medium">Starting from</div>
                       <div className="text-white text-xl font-bold font-orbitron">
-                        $25<span className="text-sm text-gray-400">/trip</span>
+                        $25<span className="text-sm text-muted-foreground">/trip</span>
                       </div>
                     </CardContent>
                   </Card>
@@ -87,7 +87,7 @@ export default function FleetSection() {
               TOYOTA PRIUS
             </h3>
             <Separator className="w-20 mb-4" />
-            <p className="text-gray-400 mb-8">
+            <p className="text-muted-foreground mb-8">
               The world&apos;s most popular hybrid car — spacious trunk for
               luggage, smooth ride quality, and exceptional fuel economy for
               those long scenic drives.
@@ -101,16 +101,16 @@ export default function FleetSection() {
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + i * 0.1 }}
                 >
-                  <Card className="p-4 hover:border-cyan-500/30">
+                  <Card className="p-4 hover:border-primary/30">
                     <CardContent className="p-0 flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-lg bg-cyan-500/10 flex items-center justify-center shrink-0">
-                        <spec.icon className="w-5 h-5 text-cyan-400" />
+                      <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
+                        <spec.icon className="w-5 h-5 text-amber-400" />
                       </div>
                       <div>
                         <div className="text-white text-sm font-medium">
                           {spec.label}
                         </div>
-                        <div className="text-gray-500 text-xs">{spec.detail}</div>
+                        <div className="text-muted-foreground text-xs">{spec.detail}</div>
                       </div>
                     </CardContent>
                   </Card>

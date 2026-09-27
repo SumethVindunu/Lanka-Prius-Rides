@@ -24,6 +24,7 @@ export function DatePicker({
   minDate,
 }: DatePickerProps) {
   const [open, setOpen] = React.useState(false);
+  const [month, setMonth] = React.useState<Date>(value || new Date());
 
   return (
     <Popover open={open} onOpenChange={setOpen}>
@@ -32,13 +33,13 @@ export function DatePicker({
           variant="secondary"
           disabled={disabled}
           className={cn(
-            "w-full justify-start text-left font-normal h-11 px-4 rounded-xl bg-dark/80 border border-cyan-500/15 hover:border-cyan-400 hover:bg-dark/80 hover:shadow-[0_0_15px_rgba(0,255,255,0.15)] transition-all duration-300",
-            !value && "text-gray-500"
+            "w-full justify-start text-left font-normal h-11 px-4 rounded-xl bg-background/80 border border-amber-500/15 hover:border-amber-400 hover:bg-background/80 hover:shadow-[0_0_15px_rgba(245,158,11,0.15)] transition-all duration-300",
+            !value && "text-muted-foreground"
           )}
         >
-          <CalendarDays className="mr-2 h-4 w-4 text-cyan-400 shrink-0" />
+          <CalendarDays className="mr-2 h-4 w-4 text-amber-400 shrink-0" />
           {value ? (
-            <span className="text-gray-200">
+            <span className="text-foreground">
               {format(value, "EEEE, MMM d, yyyy")}
             </span>
           ) : (
@@ -46,18 +47,19 @@ export function DatePicker({
           )}
         </Button>
       </PopoverTrigger>
-      <PopoverContent className="w-auto p-0" align="start">
-        <Calendar
-          mode="single"
-          selected={value}
-          onSelect={(date) => {
-            onChange(date);
-            setOpen(false);
-          }}
-          disabled={minDate ? { before: minDate } : undefined}
-          defaultMonth={value || new Date()}
-        />
-      </PopoverContent>
+        <PopoverContent className="w-auto p-0" align="start">
+          <Calendar
+            mode="single"
+            selected={value}
+            onSelect={(date) => {
+              onChange(date);
+              setOpen(false);
+            }}
+            disabled={minDate ? { before: minDate } : undefined}
+            month={month}
+            onMonthChange={setMonth}
+          />
+        </PopoverContent>
     </Popover>
   );
 }

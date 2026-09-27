@@ -7,11 +7,11 @@ import { MapPin, Loader2 } from "lucide-react";
 const MapPicker = dynamic(() => import("@/components/MapPicker"), {
   ssr: false,
   loading: () => (
-    <div className="w-full flex items-center gap-3 rounded-xl border border-cyan-500/15 bg-dark/80 px-4 py-3 text-sm text-gray-500">
-      <div className="w-8 h-8 rounded-lg bg-cyan-500/15 flex items-center justify-center shrink-0">
-        <MapPin className="w-4 h-4 text-cyan-400" />
+    <div className="w-full flex items-center gap-3 rounded-xl border border-primary/15 bg-background/80 px-4 py-3 text-sm text-muted-foreground">
+      <div className="w-8 h-8 rounded-lg bg-primary/15 flex items-center justify-center shrink-0">
+        <MapPin className="w-4 h-4 text-amber-400" />
       </div>
-      <Loader2 className="w-4 h-4 animate-spin text-cyan-400" />
+      <Loader2 className="w-4 h-4 animate-spin text-amber-400" />
       <span>Loading map...</span>
     </div>
   ),

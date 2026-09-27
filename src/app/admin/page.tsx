@@ -30,8 +30,8 @@ export default function AdminLoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-darker px-4">
-      <Card className="w-full max-w-md border-cyan-500/20">
+    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+      <Card className="w-full max-w-md border-primary/20">
         <CardHeader className="text-center">
           <CardTitle className="font-orbitron text-2xl">ADMIN ACCESS</CardTitle>
           <CardDescription>Enter the 5-digit PIN to continue</CardDescription>
