@@ -6,8 +6,6 @@ node_modules/
 out/
 
 # Environment variables
-.env
-.env.local
 .env.*.local
 
 # Debug logs
@@ -18,3 +16,4 @@ yarn-error.log*
 # OS files
 .DS_Store
 Thumbs.db
+config.bat

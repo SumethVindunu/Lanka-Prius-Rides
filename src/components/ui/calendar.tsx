@@ -63,6 +63,7 @@ function Calendar({
 
   return (
     <DayPicker
+      mode={mode as any}
       showOutsideDays={showOutsideDays}
       captionLayout={captionLayout}
       className={cn("p-3", className)}
